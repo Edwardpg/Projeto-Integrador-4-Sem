@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{319AAA39-6833-4D55-B618-97892E0916EC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ProjectReimann.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjectReimann">
+        <MSBuild Projects="ProjectReimann.dproj"/>
+    </Target>
+    <Target Name="ProjectReimann:Clean">
+        <MSBuild Projects="ProjectReimann.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectReimann:Make">
+        <MSBuild Projects="ProjectReimann.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjectReimann"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjectReimann:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjectReimann:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
